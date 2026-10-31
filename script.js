@@ -1,4 +1,5 @@
-/* ===== SRI RADHAI INDUSTRIES — v3 SCRIPT =====
+/* ===== SAM PRECISION — SCRIPT =====
+   Precision Machined Components — Bengaluru, India
    Parallax | Scroll-Triggered Animations | Counters
    ================================================= */
 
@@ -337,6 +338,58 @@ document.addEventListener('DOMContentLoaded', () => {
                     content.style.maxHeight = null;
                 }
             });
+        }
+    });
+
+    // ───── Certificate Lightbox Modal ─────
+    const certViewports = document.querySelectorAll('.cert-viewport');
+    let certModal = document.getElementById('certModal');
+    if (!certModal) {
+        certModal = document.createElement('div');
+        certModal.id = 'certModal';
+        certModal.className = 'cert-modal';
+        certModal.innerHTML = `
+            <div class="cert-modal-content">
+                <button class="cert-modal-close" id="certModalClose" aria-label="Close modal">&times;</button>
+                <img src="" alt="Certificate" class="cert-modal-img" id="certModalImg">
+                <div class="cert-modal-caption" id="certModalCaption"></div>
+            </div>
+        `;
+        document.body.appendChild(certModal);
+    }
+
+    const certModalImg = document.getElementById('certModalImg');
+    const certModalCaption = document.getElementById('certModalCaption');
+    const certModalClose = document.getElementById('certModalClose');
+
+    certViewports.forEach(vp => {
+        vp.addEventListener('click', () => {
+            const img = vp.querySelector('img');
+            if (img && certModalImg) {
+                certModalImg.src = img.src;
+                certModalCaption.textContent = img.alt || 'SAM PRECISION Certificate';
+                certModal.classList.add('active');
+                document.body.style.overflow = 'hidden';
+            }
+        });
+    });
+
+    const closeCertModal = () => {
+        if (certModal) {
+            certModal.classList.remove('active');
+            document.body.style.overflow = '';
+        }
+    };
+
+    if (certModalClose) certModalClose.addEventListener('click', closeCertModal);
+    if (certModal) {
+        certModal.addEventListener('click', (e) => {
+            if (e.target === certModal) closeCertModal();
+        });
+    }
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && certModal && certModal.classList.contains('active')) {
+            closeCertModal();
         }
     });
 
