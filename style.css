@@ -5772,3 +5772,32 @@ footer,
     max-height: 42px !important;
   }
 }
+
+/* Keep section overlays and content readable with the dark brand palette. */
+.section-overlay.overlay-light,
+.section-overlay.overlay-white {
+  background: linear-gradient(135deg, rgba(11, 8, 9, 0.88), rgba(23, 18, 20, 0.82)) !important;
+}
+
+.mantra-overlay {
+  background: linear-gradient(to bottom, rgba(11, 8, 9, 0.88), rgba(23, 18, 20, 0.82)) !important;
+}
+
+.timeline-content p,
+.step-details p {
+  color: var(--text-secondary) !important;
+}
+
+.instrument-list-panel {
+  background: var(--bg-card) !important;
+  border-color: var(--border-color) !important;
+}
+
+.instrument-list-panel h4 {
+  color: var(--text-main) !important;
+  border-bottom-color: var(--border-color) !important;
+}
+
+.inst-item {
+  color: var(--text-secondary) !important;
+}
